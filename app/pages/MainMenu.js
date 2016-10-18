@@ -6,15 +6,13 @@ import {
   View
 } from 'react-native';
 
+import StudentQueueList from '../components/menu/StudentQueueList';
+
 class MainMenu extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.studentQueueContainer}>
-          <Text>Item</Text>
-          <Text>Item</Text>
-          <Text>Item</Text>
-        </View>
+        <StudentQueueList />
 
         <View style={styles.menuContainer}>
           <Text>Hello!</Text>
