@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import StudentQueueList from '../components/menu/StudentQueueList';
+import MainButton from '../components/shared/MainButton'
 
 class MainMenu extends Component {
   render() {
@@ -15,8 +16,12 @@ class MainMenu extends Component {
         <StudentQueueList />
 
         <View style={styles.menuContainer}>
-          <Text>Hello!</Text>
-          <Text>Hello!</Text>
+          <MainButton>
+            Meet with an Advisor
+          </MainButton>
+          <MainButton>
+            Advising Calendar
+          </MainButton>
         </View>
       </View>
     );
@@ -37,7 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.08)'
   },
   text: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 32,
+    fontFamily: 'BebasNeue Regular'
   }
 });
 
