@@ -10,19 +10,39 @@ import StudentQueueList from '../components/menu/StudentQueueList';
 import MainButton from '../components/shared/MainButton'
 
 class MainMenu extends Component {
+
+  gotoAdvisorForm = () => {
+    this.props.navigator.push({
+      id: 'AdvisorForm'
+    });
+  }
+
+  gotoHelp = () => {
+    this.props.navigator.push({
+      id: 'Help'
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
+
         <StudentQueueList />
 
         <View style={styles.menuContainer}>
-          <MainButton style={styles.button}>
+          <MainButton 
+            style={styles.button}
+            onClick={this.gotoAdvisorForm}>
             Meet with an Advisor
           </MainButton>
-          <MainButton style={styles.button}>
+
+          <MainButton 
+            style={styles.button}
+            onClick={this.gotoHelp}>
             Advising Calendar
           </MainButton>
         </View>
+
       </View>
     );
   }

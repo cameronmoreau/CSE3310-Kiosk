@@ -6,17 +6,19 @@ import {
 } from 'react-native';
 
 class MainButton extends Component {
+  
   render() {
-    const { children } = this.props;
-    console.log(this.props.style);
+    const { children, style, onClick } = this.props;
 
     return (
       <TouchableHighlight 
-        style={[styles.container, this.props.style]} 
-        onPress={() => console.log('hello')}>
+        style={[styles.container, style]} 
+        onPress={onClick}>
+
         <Text style={styles.text}>
           { children }
         </Text>
+        
       </TouchableHighlight>
     );
   }
