@@ -16,10 +16,10 @@ class MainMenu extends Component {
         <StudentQueueList />
 
         <View style={styles.menuContainer}>
-          <MainButton>
+          <MainButton style={styles.button}>
             Meet with an Advisor
           </MainButton>
-          <MainButton>
+          <MainButton style={styles.button}>
             Advising Calendar
           </MainButton>
         </View>
@@ -45,6 +45,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 32,
     fontFamily: 'BebasNeue Regular'
+  },
+  button: {
+    marginTop: 15,
+    marginBottom: 15,
+    marginLeft: 30,
+    marginRight: 30
   }
 });
 
