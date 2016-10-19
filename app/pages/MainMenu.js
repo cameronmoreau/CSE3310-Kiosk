@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   menuContainer: {
-    flex: 3
+    flex: 3,
+    marginTop: 15
   },
   studentQueueContainer: {
     flex: 1,
