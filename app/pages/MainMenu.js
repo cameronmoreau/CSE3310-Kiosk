@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 import StudentQueueList from '../components/menu/StudentQueueList';
@@ -25,7 +26,9 @@ class MainMenu extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Image 
+        style={styles.container}
+        source={require('../../assets/images/bg_main.jpg')}>
 
         <StudentQueueList />
 
@@ -43,7 +46,7 @@ class MainMenu extends Component {
           </MainButton>
         </View>
 
-      </View>
+      </Image>
     );
   }
 }
@@ -52,7 +55,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#344D61'
+    width: undefined,
+    height: undefined,
+    backgroundColor:'transparent',
+    justifyContent: 'center'
+  },
+  bg: {
+    flex: 1,
+    resizeMode: 'cover'
   },
   menuContainer: {
     flex: 3
