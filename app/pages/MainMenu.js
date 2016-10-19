@@ -34,12 +34,14 @@ class MainMenu extends Component {
 
         <View style={styles.menuContainer}>
           <MainButton 
+            icon={require('../../assets/images/ic_help.png')}
             style={styles.button}
             onClick={this.gotoAdvisorForm}>
             Meet with an Advisor
           </MainButton>
 
           <MainButton 
+            icon={require('../../assets/images/ic_calendar.png')}
             style={styles.button}
             onClick={this.gotoHelp}>
             Advising Calendar

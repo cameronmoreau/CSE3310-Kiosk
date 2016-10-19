@@ -7,6 +7,8 @@ import {
 
 class StudentQueueItem extends Component {
   render() {
+    const { student } = this.props;
+
     return (
       <View style={styles.container}>
         <View style={styles.rank}>
@@ -25,20 +27,25 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: '#F1F1F1',
-    borderRadius: 8,
-    marginBottom: 15
+    borderRadius: 4,
+    marginBottom: 15,
+    height: 60
   },
   rank: {
     backgroundColor: '#DEDEDE',
     padding: 10,
-    borderBottomLeftRadius: 8,
-    borderTopLeftRadius: 8
+    borderBottomLeftRadius: 4,
+    borderTopLeftRadius: 4
   },
   rankText: {
-    fontSize: 18
+    flex: 1,
+    fontSize: 22,
+    textAlign: 'center',
+    textAlignVertical: 'center'
   },
   student: {
     flex: 1,
+    fontSize: 22,
     textAlign: 'center',
     textAlignVertical: 'center'
   }
