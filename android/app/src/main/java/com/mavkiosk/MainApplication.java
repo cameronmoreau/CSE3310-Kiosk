@@ -1,4 +1,4 @@
-package com.mavdask;
+package com.mavkiosk;
 
 import android.app.Application;
 import android.util.Log;

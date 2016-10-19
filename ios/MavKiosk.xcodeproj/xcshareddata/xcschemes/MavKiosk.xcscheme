@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "MavDask.app"
-               BlueprintName = "MavDask"
-               ReferencedContainer = "container:MavDask.xcodeproj">
+               BuildableName = "MavKiosk.app"
+               BlueprintName = "MavKiosk"
+               ReferencedContainer = "container:MavKiosk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "MavDaskTests.xctest"
-               BlueprintName = "MavDaskTests"
-               ReferencedContainer = "container:MavDask.xcodeproj">
+               BuildableName = "MavKioskTests.xctest"
+               BlueprintName = "MavKioskTests"
+               ReferencedContainer = "container:MavKiosk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "MavDaskTests.xctest"
-               BlueprintName = "MavDaskTests"
-               ReferencedContainer = "container:MavDask.xcodeproj">
+               BuildableName = "MavKioskTests.xctest"
+               BlueprintName = "MavKioskTests"
+               ReferencedContainer = "container:MavKiosk.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MavDask.app"
-            BlueprintName = "MavDask"
-            ReferencedContainer = "container:MavDask.xcodeproj">
+            BuildableName = "MavKiosk.app"
+            BlueprintName = "MavKiosk"
+            ReferencedContainer = "container:MavKiosk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MavDask.app"
-            BlueprintName = "MavDask"
-            ReferencedContainer = "container:MavDask.xcodeproj">
+            BuildableName = "MavKiosk.app"
+            BlueprintName = "MavKiosk"
+            ReferencedContainer = "container:MavKiosk.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MavDask.app"
-            BlueprintName = "MavDask"
-            ReferencedContainer = "container:MavDask.xcodeproj">
+            BuildableName = "MavKiosk.app"
+            BlueprintName = "MavKiosk"
+            ReferencedContainer = "container:MavKiosk.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

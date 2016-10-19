@@ -14,7 +14,7 @@ import MainMenu from './app/pages/MainMenu';
 import Help from './app/pages/Help';
 import AdvisorForm from './app/pages/AdvisorForm';
 
-export default class MavDask extends Component {
+export default class MavKiosk extends Component {
 
   // Renders the pages based off navigation ID
   navigatorRenderScene = (route, navigator) => {
@@ -39,4 +39,4 @@ export default class MavDask extends Component {
   }
 }
 
-AppRegistry.registerComponent('MavDask', () => MavDask);
+AppRegistry.registerComponent('MavKiosk', () => MavKiosk);

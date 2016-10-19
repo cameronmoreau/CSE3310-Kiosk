@@ -1,5 +1,5 @@
 {
-  "name": "MavDask",
+  "name": "MavKiosk",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -21,6 +21,8 @@
     "react-test-renderer": "15.3.2"
   },
   "rnpm": {
-    "assets": ["assets/fonts"]
+    "assets": [
+      "assets/fonts"
+    ]
   }
 }
