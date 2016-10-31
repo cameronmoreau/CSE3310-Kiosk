@@ -1,55 +1,44 @@
 import React, {Component} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
   View,
-  TextInput
+  Text
 } from 'react-native';
 
-import ToolbarAndroid from 'ToolbarAndroid';
+import CompletionBar from '../components/form/CompletionBar';
+
+import AdvisingCategories from '../components/advising/AdvisingCategories';
+import ContactInfo from '../components/advising/ContactInfo';
 
 class AdvisorForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      pages: [
+        <AdvisingCategories />,
+        <ContactInfo />
+      ],
+      currentPage: 0
     }
+  }
+
+  nextPressed = () => {
+    this.setState({ currentPage: this.state.currentPage + 1 });
+  }
+
+  backPressed = () => {
+    this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <ToolbarAndroid
-          style={styles.toolbar}
-          title="AwesomeApp"
-          actions={[{title: 'Settings', show: 'always'}]} />
+        <CompletionBar
+          nextPressed={this.nextPressed}
+          backPressed={this.backPressed} />
 
         <View style={styles.content}>
-
-          <Text style={styles.inputLabel}>First Name</Text>
-          <TextInput
-            style={styles.input}
-            underlineColorAndroid='rgba(0,0,0,0)'
-            onChangeText={(text) => this.setState({text})}
-            value={this.state.text}
-          />
-
-          <Text style={styles.inputLabel}>Last Name</Text>
-          <TextInput
-            style={styles.input}
-            underlineColorAndroid='rgba(0,0,0,0)'
-            onChangeText={(text) => this.setState({text})}
-            value={this.state.text}
-          />
-
-          <Text style={styles.inputLabel}>Phone Number</Text>
-          <TextInput
-            style={styles.input}
-            underlineColorAndroid='rgba(0,0,0,0)'
-            onChangeText={(text) => this.setState({text})}
-            value={this.state.text}
-          />
+          { this.state.pages[this.state.currentPage] }
         </View>
       </View>
     );
@@ -62,10 +51,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
     backgroundColor: '#344D61',
-  },
-  toolbar: {
-    backgroundColor: '#455A64',
-    height: 56,
   },
   content: {
     padding: 25
