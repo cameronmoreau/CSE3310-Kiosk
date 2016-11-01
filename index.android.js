@@ -14,6 +14,15 @@ import {
 import MainMenu from './app/pages/MainMenu';
 import Help from './app/pages/Help';
 import AdvisorForm from './app/pages/AdvisorForm';
+import * as firebase from 'firebase';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAUVuJpD_bDwDjy9ggyLCTSh9R0vVuQugE",
+  authDomain: "subtle-odyssey-128423.firebaseapp.com",
+  databaseURL: "https://subtle-odyssey-128423.firebaseio.com",
+  storageBucket: "subtle-odyssey-128423.appspot.com"
+};
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export default class MavKiosk extends Component {
 
