@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
-  View
+  View,
+  StyleSheet
 } from 'react-native';
 
 import MainInput from '../shared/MainInput';
@@ -9,30 +10,39 @@ class ContactInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      firstName: '',
+      lastName: '',
+      phone: ''
     }
   }
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <MainInput
           labelText="First Name"
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text} />
+          onChangeText={(firstName) => this.setState({firstName})}
+          value={this.state.firstName} />
 
         <MainInput
           labelText="Last Name"
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text} />
+          onChangeText={(lastName) => this.setState({lastName})}
+          value={this.state.lastNametext} />
 
         <MainInput
           labelText="Phone"
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text} />
-    </View>
+          onChangeText={(phone) => this.setState({phone})}
+          value={this.state.phone} />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 25
+  }
+})
 
 export default ContactInfo;

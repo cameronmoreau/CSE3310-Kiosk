@@ -27,13 +27,16 @@ class MainInput extends Component {
 const styles = StyleSheet.create({
   inputLabel: {
     color: '#FFF',
-    fontSize: 22
+    fontSize: 22,
+    marginBottom: 5
   },
   input: {
-    height: 80,
+    height: 70,
     fontSize: 22,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    marginBottom: 25
+    marginBottom: 25,
+    borderRadius: 4,
+    elevation: 3
   }
 })
 

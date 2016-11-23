@@ -6,17 +6,21 @@ import {
 } from 'react-native';
 
 import CompletionBar from '../components/form/CompletionBar';
+import Confirm from '../components/form/Confirm';
 
 import AdvisingCategories from '../components/advising/AdvisingCategories';
 import ContactInfo from '../components/advising/ContactInfo';
+import StudentId from '../components/advising/StudentId';
 
 class AdvisorForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pages: [
+        <Confirm />,
+        <StudentId />,
+        <ContactInfo />,
         <AdvisingCategories />,
-        <ContactInfo />
       ],
       currentPage: 0
     }
@@ -27,7 +31,12 @@ class AdvisorForm extends Component {
   }
 
   backPressed = () => {
-    this.setState({ currentPage: this.state.currentPage - 1 });
+    const { currentPage } = this.state;
+    if(currentPage == 0) {
+      this.props.navigator.pop();
+    } else {
+      this.setState({ currentPage: currentPage - 1 });
+    }
   }
 
   render() {
