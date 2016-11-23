@@ -6,6 +6,8 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 class CompletionBar extends Component {
   render() {
     const { backPressed, nextPressed, finishPressed } = this.props;
@@ -16,13 +18,19 @@ class CompletionBar extends Component {
           <TouchableHighlight 
             style={[styles.btn, styles.back]}
             onPress={backPressed}>
-            <Text style={styles.btnText}>Back</Text>
+            <View style={styles.btnContainer}>
+              <Icon name="navigate-before" size={40} color="#FFF" />
+              <Text style={styles.btnText}>Back</Text>
+            </View>
           </TouchableHighlight >
 
           <TouchableHighlight 
             style={[styles.btn, styles.next]}
             onPress={nextPressed}>
-            <Text style={styles.btnText}>Next</Text>
+            <View style={styles.btnContainer}>
+              <Text style={styles.btnText}>Next</Text>
+              <Icon name="navigate-next" size={40} color="#FFF" />
+            </View>
           </TouchableHighlight>
         </View>
       </View>
@@ -47,6 +55,10 @@ const styles = StyleSheet.create({
     fontSize: 38,
     color: '#fff',
     fontFamily: 'BebasNeue Regular'
+  },
+  btnContainer: {
+    flex: 1,
+    flexDirection: 'row',
   },
   btn: {
     padding: 10,

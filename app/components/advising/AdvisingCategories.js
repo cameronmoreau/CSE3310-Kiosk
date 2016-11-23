@@ -44,8 +44,7 @@ class AdvisingCategories extends Component {
     return (
       <View style={{flex: 1}}>
         <ScrollView
-          style={styles.scroll}
-          onScroll={() => { console.log('onScroll!'); }}>
+          style={styles.scroll}>
           { categories.map((item, index) => (
             <MainButton 
               key={index}
