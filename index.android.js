@@ -11,18 +11,16 @@ import {
   BackAndroid
 } from 'react-native';
 
+import Pusher from 'pusher-js/react-native';
+Pusher.logToConsole = true;
+
+var pusher = new Pusher('0caec0623dbc96e698fc', {
+  encrypted: true
+});
+
 import MainMenu from './app/pages/MainMenu';
 import Help from './app/pages/Help';
 import AdvisorForm from './app/pages/AdvisorForm';
-import * as firebase from 'firebase';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAUVuJpD_bDwDjy9ggyLCTSh9R0vVuQugE",
-  authDomain: "subtle-odyssey-128423.firebaseapp.com",
-  databaseURL: "https://subtle-odyssey-128423.firebaseio.com",
-  storageBucket: "subtle-odyssey-128423.appspot.com"
-};
-const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export default class MavKiosk extends Component {
 
@@ -39,6 +37,11 @@ export default class MavKiosk extends Component {
         return true;
       }
       return false;
+    });
+
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      alert(data.message);
     });
   }
   

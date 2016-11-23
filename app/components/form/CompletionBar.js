@@ -33,8 +33,10 @@ class CompletionBar extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 75,
-    padding: 15,
-    backgroundColor: '#ccc',
+    padding: 10,
+    paddingLeft: 25,
+    paddingRight: 25,
+    backgroundColor: 'rgba(0,0,0,0.15)',
   },
   content: {
     flex: 1,
@@ -42,14 +44,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   btnText: {
-    fontSize: 28,
-    color: '#fff'
+    fontSize: 38,
+    color: '#fff',
+    fontFamily: 'BebasNeue Regular'
+  },
+  btn: {
+    padding: 10,
+    borderRadius: 2,
+    elevation: 3
   },
   back: {
     backgroundColor: 'gray'
   },
   next: {
-    backgroundColor: 'blue'
+    backgroundColor: '#FD7200'
   }
 });
 

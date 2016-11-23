@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#344D61',
   },
   content: {
-    padding: 25
+    //padding: 25
   },
   inputLabel: {
     color: '#FFF',
