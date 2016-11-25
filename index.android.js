@@ -8,7 +8,9 @@ import React, { Component } from 'react';
 import { 
   AppRegistry,
   Navigator,
-  BackAndroid
+  BackAndroid,
+  View,
+  StatusBar
 } from 'react-native';
 
 import Pusher from 'pusher-js/react-native';
@@ -68,9 +70,15 @@ export default class MavKiosk extends Component {
 
   render() {
     return (
-      <Navigator
-        initialRoute={{ id: 'MainMenu' }}
-        renderScene={this.navigatorRenderScene} />
+      <View style={{flex: 1}}>
+        <StatusBar
+          backgroundColor="#1E2E39"
+          barStyle="light-content"
+        />
+        <Navigator
+          initialRoute={{ id: 'MainMenu' }}
+          renderScene={this.navigatorRenderScene} />
+      </View>
     );
   }
 }

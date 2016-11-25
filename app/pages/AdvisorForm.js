@@ -5,7 +5,7 @@ import {
   Text
 } from 'react-native';
 
-import CompletionBar from '../components/form/CompletionBar';
+import NavBar from '../components/shared/NavBar';
 import Confirm from '../components/form/Confirm';
 
 import AdvisingCategories from '../components/advising/AdvisingCategories';
@@ -42,7 +42,7 @@ class AdvisorForm extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CompletionBar
+        <NavBar
           nextPressed={this.nextPressed}
           backPressed={this.backPressed} />
 

@@ -6,6 +6,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import NavBar from '../components/shared/NavBar';
+
 import { apiCall } from '../services/api';
 
 class CourseCatalog extends Component {
@@ -20,14 +22,11 @@ class CourseCatalog extends Component {
   componentDidMount() {
     apiCall('/courses')
       .then(courses => {
-        console.log('got it');
-        console.log(courses);
-
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.setState({ courses: ds.cloneWithRows(courses) });
       })
       .catch(err => {
-        console.log(err);
+        alert(err.message);
       })
   }
 
@@ -57,6 +56,10 @@ class CourseCatalog extends Component {
 
     return (
       <View style={styles.container}>
+        <NavBar
+          title="CourseCatalog"
+          backPressed={this.props.navigator.pop} />
+
         { courses && 
           <ListView 
             dataSource={courses}
