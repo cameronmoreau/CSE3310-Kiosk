@@ -24,6 +24,12 @@ class MainMenu extends Component {
     });
   }
 
+  gotoCourseCatalog = () => {
+    this.props.navigator.push({
+      id: 'CourseCatalog'
+    });
+  }
+
   render() {
     return (
       <Image 
@@ -45,6 +51,13 @@ class MainMenu extends Component {
             style={styles.button}
             onClick={this.gotoHelp}>
             Advising Calendar
+          </MainButton>
+
+          <MainButton 
+            icon={require('../../assets/images/ic_calendar.png')}
+            style={styles.button}
+            onClick={this.gotoCourseCatalog}>
+            Course Catalog
           </MainButton>
         </View>
 

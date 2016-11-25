@@ -21,6 +21,7 @@ var pusher = new Pusher('0caec0623dbc96e698fc', {
 import MainMenu from './app/pages/MainMenu';
 import Help from './app/pages/Help';
 import AdvisorForm from './app/pages/AdvisorForm';
+import CourseCatalog from './app/pages/CourseCatalog';
 
 export default class MavKiosk extends Component {
 
@@ -59,6 +60,9 @@ export default class MavKiosk extends Component {
 
       case 'Help':
         return <Help navigator={navigator} />
+
+      case 'CourseCatalog':
+        return <CourseCatalog navigator={navigator} />
     }
   }
 
