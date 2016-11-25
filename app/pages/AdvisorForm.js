@@ -17,7 +17,7 @@ class AdvisorForm extends Component {
     super(props);
     this.state = {
       pages: [
-        <Confirm />,
+        <Confirm text="Uhhh" />,
         <StudentId />,
         <ContactInfo />,
         <AdvisingCategories />,
