@@ -20,6 +20,7 @@ class StudentId extends Component {
         <MainInput
           labelText="Student Id (Mavs 1000 #)"
           onChangeText={(id) => inputChanged('studentId', id) }
+          keyboardType="numeric"
           defaultValue={form.studentId} />
 
         <Text style={styles.text}>

@@ -16,9 +16,7 @@ class MainInput extends Component {
         <TextInput
           style={styles.input}
           underlineColorAndroid='rgba(0,0,0,0)'
-          onChangeText={onChangeText}
-          value={value}
-          defaultValue={defaultValue}
+          {...this.props}
         />
       </View>
     );

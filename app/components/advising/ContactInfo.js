@@ -29,6 +29,7 @@ class ContactInfo extends Component {
         <MainInput
           labelText="Phone"
           onChangeText={(input) => inputChanged('phone', input)}
+          keyboardType="phone-pad"
           defaultValue={form.phone} />
       </View>
     );
