@@ -12,6 +12,8 @@ const windowSize = Dimensions.get('window');
 import MainButton from '../shared/MainButton';
 
 class AdvisingCategories extends Component {
+  static showNext = true
+
   constructor(props) {
     super(props);
 

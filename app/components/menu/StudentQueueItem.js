@@ -7,16 +7,24 @@ import {
 
 class StudentQueueItem extends Component {
   render() {
-    const { student } = this.props;
+    const { 
+      student, position 
+    } = this.props;
+
+    const current = position == -1;
 
     return (
       <View style={styles.container}>
-        <View style={styles.rank}>
-          <Text style={styles.rankText}>1</Text>
+        <View style={[styles.rank, {backgroundColor: current ? '#FD7200' : '#DEDEDE'}]}>
+          { !current && 
+            <Text style={styles.rankText}>
+              { position }
+            </Text>  
+          }
         </View>
 
         <Text style={styles.student}>
-          Student Name
+          { student.name }
         </Text>
       </View>
     );
@@ -32,7 +40,6 @@ const styles = StyleSheet.create({
     height: 60
   },
   rank: {
-    backgroundColor: '#DEDEDE',
     padding: 10,
     borderBottomLeftRadius: 4,
     borderTopLeftRadius: 4

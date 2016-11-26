@@ -10,8 +10,11 @@ import {
   Navigator,
   BackAndroid,
   View,
-  StatusBar
+  StatusBar,
+  Text
 } from 'react-native';
+
+import { apiCall } from './app/services/api';
 
 import Pusher from 'pusher-js/react-native';
 Pusher.logToConsole = true;
@@ -31,6 +34,12 @@ export default class MavKiosk extends Component {
     super(props);
 
     this.navigator;
+
+    this.state = {
+      activeAdvisors: 0,
+      estWait: 0,
+      queue: []
+    }
   }
 
   componentWillMount() {
@@ -46,8 +55,47 @@ export default class MavKiosk extends Component {
     channel.bind('my_event', function(data) {
       alert(data.message);
     });
+
+    channel.bind('new_appointment', data => {
+      this.state.queue.push(data);
+      this.forceUpdate();
+    })
+
+    channel.bind('remove_appointment', data => {
+      const { queue } = this.state;
+      
+      for(var i in queue) {
+        if(queue[i]._id === data._id) {
+          this.state.queue.splice(i, 1);
+          this.forceUpdate();
+          return;
+        }
+      }
+    })
+
+    channel.bind('update_appointment', data => {
+      const { queue } = this.state;
+      
+      for(var i in queue) {
+        if(queue[i]._id === data._id) {
+          this.state.queue[i] = data;
+          this.forceUpdate();
+          return;
+        }
+      }
+    })
   }
-  
+
+  componentDidMount() {
+    apiCall('/appointments')
+      .then(appointments => {
+        for(a of appointments) {
+          this.state.queue.push(a);
+        }
+        this.forceUpdate();
+      })
+      .catch(e => alert(e.message));
+  }
 
   // Renders the pages based off navigation ID
   navigatorRenderScene = (route, navigator) => {
@@ -55,7 +103,9 @@ export default class MavKiosk extends Component {
 
     switch(route.id) {
       case 'MainMenu':
-        return <MainMenu navigator={navigator} />
+        return <MainMenu 
+          queue={this.state.queue}
+          navigator={navigator} />
       
       case 'AdvisorForm':
         return <AdvisorForm navigator={navigator} />

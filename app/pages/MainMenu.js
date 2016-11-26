@@ -31,12 +31,15 @@ class MainMenu extends Component {
   }
 
   render() {
+    const { activeAdvisors, estWait, queue } = this.props;
+
     return (
       <Image 
         style={styles.container}
         source={require('../../assets/images/bg_main.jpg')}>
 
-        <StudentQueueList />
+        <StudentQueueList
+          queue={queue} />
 
         <View style={styles.menuContainer}>
           <MainButton 

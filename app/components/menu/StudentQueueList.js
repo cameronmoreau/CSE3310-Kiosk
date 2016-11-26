@@ -10,15 +10,27 @@ import StudentQueueItem from './StudentQueueItem';
 
 class StudentQueueList extends Component {
   render() {
-    const tempUsers = [
-      1, 2, 3, 4
-    ]
+    const { queue } = this.props;
+    let pos = 0;
 
     return (
       <View style={styles.container}>
-        { tempUsers.map((item, i) => (
-          <StudentQueueItem key={i} student={item} />
-        )) }
+        { queue.map((item, i) => {
+          const current = item.state == 'In Progress';
+
+          let p = -1;
+          if(!current) {
+            pos += 1;
+            p = pos;
+          }
+
+          return (
+            <StudentQueueItem 
+              key={i}
+              position={p}
+              student={item.student[0]} />
+          );
+        }) }
       </View>
     );
   }

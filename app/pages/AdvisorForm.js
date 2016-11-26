@@ -17,10 +17,10 @@ class AdvisorForm extends Component {
     super(props);
     this.state = {
       pages: [
-        <Confirm text="Uhhh" />,
         <StudentId />,
         <ContactInfo />,
         <AdvisingCategories />,
+        <Confirm text="Uhhh" />,
       ],
       currentPage: 0
     }
@@ -44,7 +44,8 @@ class AdvisorForm extends Component {
       <View style={styles.container}>
         <NavBar
           nextPressed={this.nextPressed}
-          backPressed={this.backPressed} />
+          backPressed={this.backPressed}
+          showNext />
 
         <View style={styles.content}>
           { this.state.pages[this.state.currentPage] }
