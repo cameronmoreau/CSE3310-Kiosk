@@ -19,30 +19,17 @@ class AdvisingCategories extends Component {
 
     this.state = {
       categories: [
-        {
-          title: 'Drops',
-        },
-        {
-          title: 'Academic Holds',
-        },
-        {
-          title: 'Check Graduation',
-        },
-        {
-          title: 'Prospective Students',
-        },
-        {
-          title: 'Add a Course',
-        },
-        {
-          title: 'Change Major/Minor',
-        }
+        'Drops', 'Academic Holds', 'Check Graduation',
+        'Prospective Students', 'Add a Course', 
+        'Change Major/Minor'
       ]
     }
   }
 
   render() {
     const { categories } = this.state;
+    const { onSelected } = this.props;
+
     return (
       <View style={{flex: 1}}>
         <ScrollView
@@ -50,8 +37,9 @@ class AdvisingCategories extends Component {
           { categories.map((item, index) => (
             <MainButton 
               key={index}
+              onClick={() => onSelected(item) }
               style={{marginBottom: 25}}>
-              { item.title }
+              { item }
             </MainButton>
           )) }
         </ScrollView>

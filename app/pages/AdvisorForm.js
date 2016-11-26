@@ -17,13 +17,31 @@ class AdvisorForm extends Component {
     super(props);
     this.state = {
       pages: [
-        <StudentId />,
-        <ContactInfo />,
-        <AdvisingCategories />,
-        <Confirm text="Uhhh" />,
+        {
+          component: <StudentId />,
+          title: 'Student ID',
+          showNext: true
+        },
+        {
+          component: <ContactInfo />,
+          title: 'Contact Info',
+          showNext: true
+        },
+        {
+          component: <AdvisingCategories onSelected={this._categorySelected} />,
+          title: 'Appointment Type'
+        },
+        {
+          component:<Confirm text="Uhhh" />,
+          title: 'Confirm'
+        }
       ],
       currentPage: 0
     }
+  }
+
+  _categorySelected = (type) => {
+    this.nextPressed();
   }
 
   nextPressed = () => {
@@ -40,15 +58,18 @@ class AdvisorForm extends Component {
   }
 
   render() {
+    const page = this.state.pages[this.state.currentPage];
+
     return (
       <View style={styles.container}>
         <NavBar
           nextPressed={this.nextPressed}
           backPressed={this.backPressed}
-          showNext />
+          title={page.title}
+          showNext={page.showNext} />
 
         <View style={styles.content}>
-          { this.state.pages[this.state.currentPage] }
+          { page.component }
         </View>
       </View>
     );
