@@ -51,7 +51,8 @@ export default class MavKiosk extends Component {
       return false;
     });
 
-    var channel = pusher.subscribe('test_channel');
+    var channel = pusher.subscribe('kiosk');
+    
     channel.bind('my_event', function(data) {
       alert(data.message);
     });
