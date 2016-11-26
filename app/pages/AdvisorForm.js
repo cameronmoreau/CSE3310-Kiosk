@@ -5,6 +5,8 @@ import {
   Text
 } from 'react-native';
 
+import { apiCall } from '../services/api';
+
 import NavBar from '../components/shared/NavBar';
 import Confirm from '../components/form/Confirm';
 
@@ -39,10 +41,10 @@ class AdvisorForm extends Component {
           component: <AdvisingCategories onSelected={this._categorySelected} />,
           title: 'Appointment Type'
         },
-        {
-          component:<Confirm text="Uhhh" />,
-          title: 'Confirm'
-        }
+        // {
+        //   component:<Confirm text="Uhhh" />,
+        //   title: 'Confirm'
+        // }
       ],
       currentPage: 0,
       form
@@ -58,9 +60,38 @@ class AdvisorForm extends Component {
     this.nextPressed();
   }
 
+  _sendRequest = (type) => {
+    const form = this.state.form;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        student: {
+          name: `${form.firstName} ${form.lastName}`,
+          studentId: form.studentId,
+          phoneNumber: form.phone
+        },
+        type: 'Advising',
+        description: form.category
+      })
+    }
+
+    // Do the request
+    apiCall('/appointments', options)
+      .then(res => this.props.navigator.pop())
+      .catch(e => alert(e.message));
+  }
+
   nextPressed = () => {
-    this.setState({ currentPage: this.state.currentPage + 1 });
-    console.log(this.state.form);
+    const { currentPage, pages } = this.state;
+
+    if(currentPage < pages.length - 1) {
+      this.setState({ currentPage: currentPage + 1 });
+    } else {
+      this._sendRequest();
+    }
   }
 
   backPressed = () => {
