@@ -15,15 +15,23 @@ import StudentId from '../components/advising/StudentId';
 class AdvisorForm extends Component {
   constructor(props) {
     super(props);
+    const form = {
+      studentId: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      category: null,
+    }
+
     this.state = {
       pages: [
         {
-          component: <StudentId />,
+          component: <StudentId form={form} inputChanged={this._formInputChanged} />,
           title: 'Student ID',
           showNext: true
         },
         {
-          component: <ContactInfo />,
+          component: <ContactInfo form={form} inputChanged={this._formInputChanged} />,
           title: 'Contact Info',
           showNext: true
         },
@@ -36,16 +44,23 @@ class AdvisorForm extends Component {
           title: 'Confirm'
         }
       ],
-      currentPage: 0
+      currentPage: 0,
+      form
     }
   }
 
+  _formInputChanged = (key, value) => {
+    this.state.form[key] = value;
+  }
+
   _categorySelected = (type) => {
+    this.state.form.category = type;
     this.nextPressed();
   }
 
   nextPressed = () => {
     this.setState({ currentPage: this.state.currentPage + 1 });
+    console.log(this.state.form);
   }
 
   backPressed = () => {

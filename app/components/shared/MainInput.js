@@ -8,7 +8,7 @@ import {
 
 class MainInput extends Component {
   render() {
-    const { labelText, value, onChangeText } = this.props;
+    const { labelText, value, onChangeText, defaultValue } = this.props;
 
     return (
       <View>
@@ -18,6 +18,7 @@ class MainInput extends Component {
           underlineColorAndroid='rgba(0,0,0,0)'
           onChangeText={onChangeText}
           value={value}
+          defaultValue={defaultValue}
         />
       </View>
     );
