@@ -49,15 +49,30 @@ class MainMenu extends Component {
   }
 
   render() {
-    const { activeAdvisors, estWait, queue, navigator } = this.props;
+    const { 
+      activeAdvisors, 
+      estWait, 
+      queue, 
+      navigator 
+    } = this.props;
 
     return (
       <Image 
         style={styles.container}
         source={require('../../assets/images/bg_main.jpg')}>
 
-        <StudentQueueList
-          queue={queue} />
+        <ScrollView>
+          <View style={styles.sideContainer}>
+            <Text style={styles.sideText}>
+              Wait List: {queue.length}
+            </Text>
+            <Text style={styles.sideText}>
+              EST Wait: {queue.length * 5} Min
+            </Text>
+            <StudentQueueList
+              queue={queue} />
+          </View>
+        </ScrollView>
 
         <View style={styles.menuContainer}>
           <ScrollView>
@@ -94,6 +109,16 @@ const styles = StyleSheet.create({
   menuContainer: {
     flex: 3,
     marginTop: 15
+  },
+  sideText: {
+    color: 'white',
+    fontSize: 44,
+    marginTop: 5,
+    fontFamily: 'BebasNeue Regular',
+    alignSelf: 'center'
+  },
+  sideContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.08)',
   },
   studentQueueContainer: {
     flex: 1,

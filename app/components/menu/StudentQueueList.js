@@ -39,7 +39,6 @@ class StudentQueueList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.08)',
     padding: 20
   }
 })
