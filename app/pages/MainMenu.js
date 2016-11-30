@@ -4,34 +4,52 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 
 import StudentQueueList from '../components/menu/StudentQueueList';
 import MainButton from '../components/shared/MainButton'
 
+import HelpIconImage from '../../assets/images/ic_help.png';
+import CalendarIconImage from '../../assets/images/ic_calendar.png';
+
 class MainMenu extends Component {
 
-  gotoAdvisorForm = () => {
-    this.props.navigator.push({
-      id: 'AdvisorForm'
-    });
-  }
+  constructor(props) {
+    super(props);
 
-  gotoHelp = () => {
-    this.props.navigator.push({
-      id: 'Help'
-    });
-  }
-
-  gotoCourseCatalog = () => {
-    this.props.navigator.push({
-      id: 'CourseCatalog'
-    });
+    this.btns = [
+      {
+        title: 'Meet with an Advisor',
+        image: HelpIconImage,
+        page: 'AdvisorForm'
+      },
+      {
+        title: 'Course Catalog',
+        image: HelpIconImage,
+        page: 'CourseCatalog'
+      },
+      {
+        title: 'Drop Form',
+        image: HelpIconImage,
+        page: 'EmailDropForm'
+      },
+      {
+        title: 'Advising Calendar',
+        image: CalendarIconImage,
+        page: 'Help'
+      },
+      {
+        title: 'Academic Calendar',
+        image: CalendarIconImage,
+        page: 'Help'
+      },
+    ]
   }
 
   render() {
-    const { activeAdvisors, estWait, queue } = this.props;
+    const { activeAdvisors, estWait, queue, navigator } = this.props;
 
     return (
       <Image 
@@ -42,26 +60,17 @@ class MainMenu extends Component {
           queue={queue} />
 
         <View style={styles.menuContainer}>
-          <MainButton 
-            icon={require('../../assets/images/ic_help.png')}
-            style={styles.button}
-            onClick={this.gotoAdvisorForm}>
-            Meet with an Advisor
-          </MainButton>
-
-          <MainButton 
-            icon={require('../../assets/images/ic_calendar.png')}
-            style={styles.button}
-            onClick={this.gotoHelp}>
-            Advising Calendar
-          </MainButton>
-
-          <MainButton 
-            icon={require('../../assets/images/ic_calendar.png')}
-            style={styles.button}
-            onClick={this.gotoCourseCatalog}>
-            Course Catalog
-          </MainButton>
+          <ScrollView>
+            { this.btns.map((item, i) => (
+              <MainButton
+                key={i}
+                icon={item.image}
+                style={styles.button}
+                onClick={() => navigator.push({id: item.page})}>
+                { item.title }
+              </MainButton> 
+            ))}
+          </ScrollView>
         </View>
 
       </Image>

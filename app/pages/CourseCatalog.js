@@ -57,7 +57,7 @@ class CourseCatalog extends Component {
     return (
       <View style={styles.container}>
         <NavBar
-          title="CourseCatalog"
+          title="Course Catalog"
           backPressed={this.props.navigator.pop} />
 
         { courses && 

@@ -27,6 +27,7 @@ import MainMenu from './app/pages/MainMenu';
 import Help from './app/pages/Help';
 import AdvisorForm from './app/pages/AdvisorForm';
 import CourseCatalog from './app/pages/CourseCatalog';
+import EmailDropForm from './app/pages/EmailDropForm';
 
 export default class MavKiosk extends Component {
 
@@ -90,7 +91,7 @@ export default class MavKiosk extends Component {
   componentDidMount() {
     apiCall('/appointments')
       .then(appointments => {
-        for(a of appointments) {
+        for(const a of appointments) {
           this.state.queue.push(a);
         }
         this.forceUpdate();
@@ -116,6 +117,9 @@ export default class MavKiosk extends Component {
 
       case 'CourseCatalog':
         return <CourseCatalog navigator={navigator} />
+
+      case 'EmailDropForm':
+        return <EmailDropForm navigator={navigator} />
     }
   }
 
