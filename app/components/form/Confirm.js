@@ -47,7 +47,7 @@ class Confirm extends Component {
             styles={btnStyle}
             backgroundColor="#2ecc71"
             text="Yes"
-            onPress={onNo}
+            onPress={onYes}
             iconLeft="close" />
         </View>
 

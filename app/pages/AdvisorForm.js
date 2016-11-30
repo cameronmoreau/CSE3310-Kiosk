@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  Alert
 } from 'react-native';
 
 import { apiCall } from '../services/api';
@@ -13,6 +14,7 @@ import Confirm from '../components/form/Confirm';
 import AdvisingCategories from '../components/advising/AdvisingCategories';
 import ContactInfo from '../components/advising/ContactInfo';
 import StudentId from '../components/advising/StudentId';
+import Completed from '../components/advising/Completed';
 
 class AdvisorForm extends Component {
   constructor(props) {
@@ -22,10 +24,11 @@ class AdvisorForm extends Component {
       firstName: '',
       lastName: '',
       phone: '',
-      category: null,
+      category: null
     }
 
     this.state = {
+      timer: 10,
       pages: [
         {
           component: <StudentId form={form} inputChanged={this._formInputChanged} />,
@@ -51,12 +54,85 @@ class AdvisorForm extends Component {
     }
   }
 
+  _addCreated = () => {
+    const self = this;
+
+    const timer = setInterval(() => {
+      // Timer done
+      if(this.state.timer <= 0) {
+        clearInterval(timer);
+        this.props.navigator.pop();
+      }
+      console.log('tick', this.state.timer);
+
+      self.setState({
+        timer: this.state.timer - 1
+      })
+    }, 1000)
+
+    this.state.pages.push({
+      title: 'Success',
+      component: (
+        <Completed
+          onPress={() => {clearInterval(timer); this.props.navigator.pop(); }} />
+      )
+    });
+  }
+
+  _addConfirmPage = (text, noText) => {
+    const onNo = () => {
+      Alert.alert('Uh oh', noText, [
+        {text: 'Okay', onPress: () => this.props.navigator.pop()}
+      ])
+    }
+
+    this.state.pages.push({
+      title: 'Confirm',
+      component: (
+        <Confirm 
+          text={text} 
+          onNo={onNo} 
+          onYes={this.nextPressed} />
+      )
+    });
+  }
+
   _formInputChanged = (key, value) => {
     this.state.form[key] = value;
   }
 
   _categorySelected = (type) => {
     this.state.form.category = type;
+
+    switch(type) {
+      case 'Add a Course':
+        this._addConfirmPage(
+          'Do you already know which courses you want to take ' +
+          'and their course numbers?',
+          'Please figure that out and create another appointment'
+        );
+        break;
+
+      case 'Academic Holds':
+        this._addConfirmPage(
+          'Are all of the following field in the form completed?\n\n' +
+          '- Student information\n' +
+          '- Course requests\n' +
+          '- Student signature and date',
+          'Please fill these fields out and create another appointment'
+        );
+        break;
+
+      case 'Drops':
+        this._addConfirmPage(
+          'Is the drop form filled out and signed?',
+          'Please fill that out and create another appointment. ' +
+          'If you need the form, it is available from the ' +
+          'main menu'
+        );
+        break;
+    }
+
     this.nextPressed();
   }
 
@@ -80,7 +156,10 @@ class AdvisorForm extends Component {
 
     // Do the request
     apiCall('/appointments', options)
-      .then(res => this.props.navigator.pop())
+      .then(res => {
+        this.nextPressed();
+        this._addCreated();
+      })
       .catch(e => alert(e.message));
   }
 
