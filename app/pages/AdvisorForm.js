@@ -61,7 +61,12 @@ class AdvisorForm extends Component {
 
     this.state.pages.push({
       title: 'Confirm',
-      component: <Confirm text={text} onNo={onNo} />
+      component: (
+        <Confirm 
+          text={text} 
+          onNo={onNo} 
+          onYes={this.nextPressed} />
+      )
     });
   }
 

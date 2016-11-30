@@ -6,11 +6,11 @@ export const apiCall = (url, options = {}) => {
 }
 
 const validate = (response) => {
-  if(response.status >= 200 && response.status < 300) {
-    return response.json();
-  } else {
-    console.log('error');
-    console.log(response);
-    throw new Error('an error occured');
-  }
+  return response.json().then(res => {
+    if(response.status >= 200 && response.status < 300) {
+      return res;
+    } else {
+      throw new Error(res.error);
+    }
+  })
 }
