@@ -38,12 +38,12 @@ class MainMenu extends Component {
       {
         title: 'Advising Calendar',
         image: CalendarIconImage,
-        page: 'Help'
+        page: 'AdvisingCalendar'
       },
       {
         title: 'Academic Calendar',
         image: CalendarIconImage,
-        page: 'Help'
+        page: 'AcademicCalendar'
       },
     ]
   }
