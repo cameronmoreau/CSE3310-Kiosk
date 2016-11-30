@@ -14,6 +14,7 @@ import Confirm from '../components/form/Confirm';
 import AdvisingCategories from '../components/advising/AdvisingCategories';
 import ContactInfo from '../components/advising/ContactInfo';
 import StudentId from '../components/advising/StudentId';
+import Completed from '../components/advising/Completed';
 
 class AdvisorForm extends Component {
   constructor(props) {
@@ -23,10 +24,11 @@ class AdvisorForm extends Component {
       firstName: '',
       lastName: '',
       phone: '',
-      category: null,
+      category: null
     }
 
     this.state = {
+      timer: 10,
       pages: [
         {
           component: <StudentId form={form} inputChanged={this._formInputChanged} />,
@@ -50,6 +52,31 @@ class AdvisorForm extends Component {
       currentPage: 0,
       form
     }
+  }
+
+  _addCreated = () => {
+    const self = this;
+
+    const timer = setInterval(() => {
+      // Timer done
+      if(this.state.timer <= 0) {
+        clearInterval(timer);
+        this.props.navigator.pop();
+      }
+      console.log('tick', this.state.timer);
+
+      self.setState({
+        timer: this.state.timer - 1
+      })
+    }, 1000)
+
+    this.state.pages.push({
+      title: 'Success',
+      component: (
+        <Completed
+          onPress={() => {clearInterval(timer); this.props.navigator.pop(); }} />
+      )
+    });
   }
 
   _addConfirmPage = (text, noText) => {
@@ -129,7 +156,10 @@ class AdvisorForm extends Component {
 
     // Do the request
     apiCall('/appointments', options)
-      .then(res => this.props.navigator.pop())
+      .then(res => {
+        this.nextPressed();
+        this._addCreated();
+      })
       .catch(e => alert(e.message));
   }
 
