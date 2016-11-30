@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  Alert
 } from 'react-native';
 
 import { apiCall } from '../services/api';
@@ -51,12 +52,55 @@ class AdvisorForm extends Component {
     }
   }
 
+  _addConfirmPage = (text, noText) => {
+    const onNo = () => {
+      Alert.alert('Uh oh', noText, [
+        {text: 'Okay', onPress: () => this.props.navigator.pop()}
+      ])
+    }
+
+    this.state.pages.push({
+      title: 'Confirm',
+      component: <Confirm text={text} onNo={onNo} />
+    });
+  }
+
   _formInputChanged = (key, value) => {
     this.state.form[key] = value;
   }
 
   _categorySelected = (type) => {
     this.state.form.category = type;
+
+    switch(type) {
+      case 'Add a Course':
+        this._addConfirmPage(
+          'Do you already know which courses you want to take ' +
+          'and their course numbers?',
+          'Please figure that out and create another appointment'
+        );
+        break;
+
+      case 'Academic Holds':
+        this._addConfirmPage(
+          'Are all of the following field in the form completed?\n\n' +
+          '- Student information\n' +
+          '- Course requests\n' +
+          '- Student signature and date',
+          'Please fill these fields out and create another appointment'
+        );
+        break;
+
+      case 'Drops':
+        this._addConfirmPage(
+          'Is the drop form filled out and signed?',
+          'Please fill that out and create another appointment. ' +
+          'If you need the form, it is available from the ' +
+          'main menu'
+        );
+        break;
+    }
+
     this.nextPressed();
   }
 
