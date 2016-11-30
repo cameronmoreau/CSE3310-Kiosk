@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  WebView
+  WebView,
+  Image
 } from 'react-native';
 
 import NavBar from '../components/shared/NavBar';
@@ -16,12 +17,13 @@ class AdvisingCalendar extends Component {
       <View style={styles.container}>
         <NavBar
           title="Advising Calendar"
-          backPressed={this.props.navigator.pop} />
-
-        <WebView
-        source={{uri: 'https://cse.uta.edu/current-students/undergraduate-studies.php'}}
-        style={{marginTop: 0}}
+          backPressed={this.props.navigator.pop} 
         />
+        <Image
+          style={styles.calendar}
+          source={require('../../assets/images/advising_december.png')}
+        />
+        
       </View>
     );
   }
@@ -34,6 +36,14 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor: '#344D61',
   },
+  calendar: {
+    flex: 1,
+    resizeMode: 'cover',
+    flexDirection: 'row',
+    width: undefined,
+    height: undefined,
+    justifyContent: 'center'
+  }
 });
 
 export default AdvisingCalendar;
