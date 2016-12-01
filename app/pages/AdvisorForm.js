@@ -29,6 +29,7 @@ class AdvisorForm extends Component {
 
     this.state = {
       timer: 10,
+      submitted: false,
       pages: [
         {
           component: <StudentId form={form} inputChanged={this._formInputChanged} />,
@@ -157,19 +158,22 @@ class AdvisorForm extends Component {
     // Do the request
     apiCall('/appointments', options)
       .then(res => {
-        this.nextPressed();
+        this.setState({submitted: true});
         this._addCreated();
+        this.nextPressed();
       })
       .catch(e => alert(e.message));
   }
 
   nextPressed = () => {
-    const { currentPage, pages } = this.state;
+    const { currentPage, pages, submitted } = this.state;
 
     if(currentPage < pages.length - 1) {
       this.setState({ currentPage: currentPage + 1 });
     } else {
-      this._sendRequest();
+      if(!submitted) {
+        this._sendRequest();
+      }
     }
   }
 

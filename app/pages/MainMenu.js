@@ -5,8 +5,11 @@ import {
   Text,
   View,
   Image,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from 'react-native';
+
+const ScreenHeight = Dimensions.get("window").height;
 
 import StudentQueueList from '../components/menu/StudentQueueList';
 import MainButton from '../components/shared/MainButton'
@@ -119,6 +122,7 @@ const styles = StyleSheet.create({
   },
   sideContainer: {
     backgroundColor: 'rgba(0, 0, 0, 0.08)',
+    minHeight: ScreenHeight - 25
   },
   studentQueueContainer: {
     flex: 1,
