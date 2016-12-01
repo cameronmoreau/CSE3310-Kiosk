@@ -40,7 +40,7 @@ class Confirm extends Component {
             backgroundColor="#e74c3c"
             text="No"
             onPress={onNo}
-            iconLeft="check" />
+            iconLeft="close" />
 
           <IconButton
             iconSize={iconSize}
@@ -48,7 +48,7 @@ class Confirm extends Component {
             backgroundColor="#2ecc71"
             text="Yes"
             onPress={onYes}
-            iconLeft="close" />
+            iconLeft="check" />
         </View>
 
       </View>
