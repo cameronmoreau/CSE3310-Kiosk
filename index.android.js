@@ -25,6 +25,8 @@ var pusher = new Pusher('0caec0623dbc96e698fc', {
 
 import MainMenu from './app/pages/MainMenu';
 import Help from './app/pages/Help';
+import AcademicCalendar from './app/pages/AcademicCalendar';
+import AdvisingCalendar from './app/pages/AdvisingCalendar';
 import AdvisorForm from './app/pages/AdvisorForm';
 import CourseCatalog from './app/pages/CourseCatalog';
 import EmailDropForm from './app/pages/EmailDropForm';
@@ -114,6 +116,12 @@ export default class MavKiosk extends Component {
 
       case 'Help':
         return <Help navigator={navigator} />
+
+      case 'AcademicCalendar':
+        return <AcademicCalendar navigator={navigator} />
+
+      case 'AdvisingCalendar':
+        return <AdvisingCalendar navigator={navigator} />
 
       case 'CourseCatalog':
         return <CourseCatalog navigator={navigator} />
