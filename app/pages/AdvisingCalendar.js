@@ -34,15 +34,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    backgroundColor: '#344D61',
+    backgroundColor: '#FFF',
   },
   calendar: {
     flex: 1,
-    resizeMode: 'cover',
-    flexDirection: 'row',
-    width: undefined,
-    height: undefined,
-    justifyContent: 'center'
+    // resizeMode: 'cover',
+    // flexDirection: 'row',
+    // width: undefined,
+    // height: undefined,
+    justifyContent: 'center',
+    alignSelf: 'center'
   }
 });
 

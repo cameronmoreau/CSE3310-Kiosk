@@ -14,6 +14,9 @@ const ScreenHeight = Dimensions.get("window").height;
 import StudentQueueList from '../components/menu/StudentQueueList';
 import MainButton from '../components/shared/MainButton'
 
+import MeetIconImage from '../../assets/images/ic_meet.png';
+import BookIconImage from '../../assets/images/ic_book.png';
+import FormIconImage from '../../assets/images/ic_form.png';
 import HelpIconImage from '../../assets/images/ic_help.png';
 import CalendarIconImage from '../../assets/images/ic_calendar.png';
 
@@ -25,17 +28,17 @@ class MainMenu extends Component {
     this.btns = [
       {
         title: 'Meet with an Advisor',
-        image: HelpIconImage,
+        image: MeetIconImage,
         page: 'AdvisorForm'
       },
       {
         title: 'Course Catalog',
-        image: HelpIconImage,
+        image: BookIconImage,
         page: 'CourseCatalog'
       },
       {
         title: 'Drop Form',
-        image: HelpIconImage,
+        image: FormIconImage,
         page: 'EmailDropForm'
       },
       {
@@ -49,6 +52,14 @@ class MainMenu extends Component {
         page: 'AcademicCalendar'
       },
     ]
+  }
+
+  _openPage = (page) => {
+    if(page === 'AdvisorForm' && this.props.activeAdvisors < 1) {
+      alert('It looks like there aren\'t any advisors available. Please try again later');
+    } else {
+      this.props.navigator.push({id: page})
+    }
   }
 
   render() {
@@ -84,7 +95,7 @@ class MainMenu extends Component {
                 key={i}
                 icon={item.image}
                 style={styles.button}
-                onClick={() => navigator.push({id: item.page})}>
+                onClick={() => this._openPage(item.page)}>
                 { item.title }
               </MainButton> 
             ))}

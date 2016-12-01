@@ -87,16 +87,33 @@ export default class MavKiosk extends Component {
           return;
         }
       }
+    });
+
+    channel.bind('advisor_available', data => {
+      this.setState({activeAdvisors: this.state.activeAdvisors + 1});
+    })
+
+    channel.bind('advisor_unavailable', data => {
+      this.setState({activeAdvisors: this.state.activeAdvisors - 1});
     })
   }
 
   componentDidMount() {
+    // get queue
     apiCall('/appointments')
       .then(appointments => {
         for(const a of appointments) {
           this.state.queue.push(a);
         }
         this.forceUpdate();
+      })
+      .catch(e => alert(e.message));
+
+
+    // Find active advisors
+    apiCall('/advisors/online')
+      .then(res => {
+        this.setState({activeAdvisors: res.count});
       })
       .catch(e => alert(e.message));
   }
@@ -109,6 +126,7 @@ export default class MavKiosk extends Component {
       case 'MainMenu':
         return <MainMenu 
           queue={this.state.queue}
+          activeAdvisors={this.state.activeAdvisors}
           navigator={navigator} />
       
       case 'AdvisorForm':
